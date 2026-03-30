@@ -1,0 +1,53 @@
+name: Auto-add CLA workflow to new repos
+on:
+  repository_dispatch:
+    types: [new-repo]
+  workflow_dispatch:
+    inputs:
+      repo_name:
+        description: "Repository name to add CLA to"
+        required: true
+
+jobs:
+  add-cla:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate token from GitHub App
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: blacklanternsecurity
+
+      - name: Checkout CLA workflow template
+        uses: actions/checkout@v4
+
+      - name: Add CLA workflow to repo
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          REPO="${{ github.event.client_payload.repo_name || github.event.inputs.repo_name }}"
+          if [ -z "$REPO" ]; then
+            echo "No repo specified"
+            exit 1
+          fi
+
+          DEFAULT_BRANCH=$(gh api "repos/blacklanternsecurity/$REPO" --jq '.default_branch' 2>/dev/null)
+          if [ -z "$DEFAULT_BRANCH" ]; then
+            echo "Could not get default branch for $REPO"
+            exit 1
+          fi
+
+          # Check if already exists
+          if gh api "repos/blacklanternsecurity/$REPO/contents/.github/workflows/cla.yml?ref=$DEFAULT_BRANCH" > /dev/null 2>&1; then
+            echo "CLA workflow already exists in $REPO"
+            exit 0
+          fi
+
+          CONTENT=$(base64 -w0 < workflow-templates/cla.yml)
+          gh api --method PUT "repos/blacklanternsecurity/$REPO/contents/.github/workflows/cla.yml" \
+            -f message="ci: add CLA workflow" \
+            -f content="$CONTENT" \
+            -f branch="$DEFAULT_BRANCH"
+          echo "Added CLA workflow to $REPO"
