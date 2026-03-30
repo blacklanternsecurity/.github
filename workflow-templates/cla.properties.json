@@ -1,0 +1,6 @@
+{
+  "name": "CLA Assistant",
+  "description": "Require contributors to sign the Black Lantern Security CLA before merging PRs",
+  "iconName": "shield-check",
+  "categories": ["Automation"]
+}
