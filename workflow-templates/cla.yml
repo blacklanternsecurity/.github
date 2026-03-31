@@ -32,7 +32,7 @@ jobs:
           else
             ASSOC="${{ github.event.issue.author_association }}"
           fi
-          if [ "$ASSOC" = "MEMBER" ] || [ "$ASSOC" = "OWNER" ]; then
+          if [ "$ASSOC" = "MEMBER" ] || [ "$ASSOC" = "OWNER" ] || [ "$ASSOC" = "COLLABORATOR" ]; then
             echo "is_member=true" >> "$GITHUB_OUTPUT"
           else
             echo "is_member=false" >> "$GITHUB_OUTPUT"
