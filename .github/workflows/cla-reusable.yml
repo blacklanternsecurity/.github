@@ -69,7 +69,11 @@ jobs:
           done
 
           echo "all_exempt=$ALL_EXEMPT" >> "$GITHUB_OUTPUT"
-          echo "exempt_logins=$EXEMPT_LOGINS" >> "$GITHUB_OUTPUT"
+          {
+            echo "exempt_logins<<EOF"
+            echo "$EXEMPT_LOGINS"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Skip CLA when all committers are exempt
         if: steps.cla-check.outputs.all_exempt == 'true' && github.event_name == 'pull_request_target'
