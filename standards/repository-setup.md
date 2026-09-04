@@ -30,6 +30,8 @@ Issue templates are the exception, and the trap. They inherit as a set, not file
 
 An issue template that sets a label fails if the label does not exist in the repository. `bug`, `enhancement`, and `rfc` exist everywhere. So does `adr`, which an RFC is relabeled to when it ends, see [rfc.md](rfc.md).
 
+Labels are declared configuration, not a thing anyone clicks per repository. Same reason as branch protection below.
+
 ## Branch protection
 
 - The trunk requires a pull request, requires one approving review, and blocks force pushes and deletion.
