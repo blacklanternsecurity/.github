@@ -1,0 +1,17 @@
+name: "CLA Assistant"
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_target:
+    types: [opened, closed, synchronize]
+
+permissions: {}
+
+jobs:
+  cla:
+    uses: blacklanternsecurity/.github/.github/workflows/cla-reusable.yml@<full-40-character-sha> # replace with a commit SHA
+    permissions:
+      pull-requests: write
+      statuses: write
+    secrets: inherit
