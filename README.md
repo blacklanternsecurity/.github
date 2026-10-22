@@ -1,20 +1,37 @@
 # .github
 
-Organization-wide GitHub configurations for [Black Lantern Security](https://github.com/blacklanternsecurity).
+Organization-wide GitHub configuration: default community health files, engineering standards, shared reusable workflows.
 
-## Workflow Templates
+Two rules that are easy to get wrong:
 
-### CLA Assistant
+- This repository must stay public. GitHub serves default community health files only from a public `.github`. Nothing confidential belongs here.
+- A default is inherited only by repositories that do not define their own. Adding a file here does not override a repository that already has one.
 
-Requires contributors to sign the [Individual Contributor License Agreement](https://github.com/blacklanternsecurity/CLA/blob/main/ICLA.md) before PRs can be merged.
+Changes here reach every repository on merge.
 
-**To add to a repo:**
+## Layout
 
-1. Go to the repo's Actions tab
-2. Click "New workflow"
-3. Find "CLA Assistant" under the organization templates
-4. Click "Configure" and commit to `main`
+| Path | What it is |
+|---|---|
+| [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), [SECURITY.md](SECURITY.md), [SUPPORT.md](SUPPORT.md) | Defaults inherited org-wide |
+| [standards/](standards/) | The engineering standard, one concern per file |
+| [templates/](templates/) | `AGENTS.md` and `CLAUDE.md` for other repositories |
+| [.github/workflows/](.github/workflows/) | Reusable workflows other repositories call |
+| [workflow-templates/](workflow-templates/) | Starter workflows in the Actions picker |
+| [profile/README.md](profile/README.md) | The organization profile page |
 
-**Or** copy `workflow-templates/cla.yml` to `.github/workflows/cla.yml` in your repo.
+A license cannot be inherited. See [standards/repository-setup.md](standards/repository-setup.md).
 
-**Required setup:** Create an org-level secret named `CLA_TOKEN` with a PAT that has `repo` scope, so the action can write signatures to the central `blacklanternsecurity/CLA` repo.
+## Standards
+
+The engineering standard lives in [standards/](standards/), one concern per file. [AGENTS.md](AGENTS.md) indexes it and says when to read each one.
+
+## Reusable workflows
+
+[cla-reusable.yml](.github/workflows/cla-reusable.yml) requires the CLA from external contributors and exempts org members and bots.
+
+Call it with [workflow-templates/cla.yml](workflow-templates/cla.yml), which is also offered in the Actions picker. Signatures are written to [blacklanternsecurity/CLA](https://github.com/blacklanternsecurity/CLA).
+
+## Working here
+
+How to validate a change here: [AGENTS.md](AGENTS.md).

@@ -1,0 +1,49 @@
+name: RFC
+description: A change that needs a consensus decision before work starts
+title: "RFC: "
+labels: ["rfc"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Open this in the lowest repository that contains the change. Touching several repositories means the topmost parent they share.
+  - type: input
+    id: status
+    attributes:
+      label: Status
+      description: Open for comment, and the revision number.
+      value: Open for comment, revision 1.
+    validations:
+      required: true
+  - type: input
+    id: expiration
+    attributes:
+      label: Expiration
+      description: When comment closes if quorum is not reached. Size it to what is being decided.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: The end state, and what has to change to reach it.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What this covers, and what it does not.
+    validations:
+      required: true
+  - type: textarea
+    id: changelog
+    attributes:
+      label: Revision changelog
+      description: One entry per revision. What changed, why, and who raised it, linked to their comment. Withdrawn items stay visible with the reason. The final entry records the decision and which exit reached it, quorum consensus or expiration.
+      value: |
+        | Rev | Change | Reason | Raised by |
+        |---|---|---|---|
+        | 1 | Initial RFC | | |
+    validations:
+      required: true
