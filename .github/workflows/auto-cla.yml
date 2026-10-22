@@ -21,7 +21,7 @@ jobs:
           owner: blacklanternsecurity
 
       - name: Checkout CLA workflow template
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Add CLA workflow to repo
         env:
