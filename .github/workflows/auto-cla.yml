@@ -10,7 +10,7 @@ on:
 
 jobs:
   add-cla:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Generate token from GitHub App
         id: app-token
@@ -26,10 +26,14 @@ jobs:
       - name: Add CLA workflow to repo
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          REPO: ${{ github.event.client_payload.repo_name || github.event.inputs.repo_name }}
         run: |
-          REPO="${{ github.event.client_payload.repo_name || github.event.inputs.repo_name }}"
           if [ -z "$REPO" ]; then
             echo "No repo specified"
+            exit 1
+          fi
+          if [[ ! "$REPO" =~ ^[A-Za-z0-9._-]+$ ]]; then
+            echo "Invalid repo name: $REPO"
             exit 1
           fi
 
