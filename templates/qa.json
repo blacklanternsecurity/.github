@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "artifacts": [
+    {
+      "id": "unit-tests",
+      "class": "functional",
+      "scope": "pr",
+      "when": {"always": true},
+      "boundary": "The full test suite passes.",
+      "method": "ci",
+      "ci_check": "test",
+      "evidence": "The check passes at the head commit."
+    },
+    {
+      "id": "install-runtime",
+      "class": "install",
+      "scope": "pr",
+      "when": {"paths": ["pyproject.toml", "uv.lock"]},
+      "boundary": "The package installs and imports without development dependencies.",
+      "method": "scripted",
+      "command": "uv sync --frozen --no-dev && uv run --no-sync python -c 'import <package>'",
+      "evidence": "Exit status 0 and the import succeeds."
+    },
+    {
+      "id": "docs-build",
+      "class": "install",
+      "scope": "pr",
+      "when": {"paths": ["docs/*", "mkdocs.yml", "pyproject.toml", "uv.lock"]},
+      "boundary": "The documentation site builds as CI publishes it.",
+      "method": "scripted",
+      "command": "uv sync --frozen --group docs && uv run --no-sync mkdocs build",
+      "evidence": "Exit status 0 with no new warnings."
+    },
+    {
+      "id": "codeql",
+      "class": "security",
+      "scope": "pr",
+      "when": {"always": true},
+      "boundary": "No new code-scanning alerts.",
+      "method": "ci",
+      "ci_check": "CodeQL",
+      "evidence": "The check passes at the head commit."
+    },
+    {
+      "id": "perf-benchmarks",
+      "class": "performance",
+      "scope": "release",
+      "when": {"always": true},
+      "boundary": "No benchmark regresses past its threshold against the previous release.",
+      "method": "manual",
+      "procedure": "Run the benchmark suite on the release candidate and on the previous release tag, on the same machine, and compare.",
+      "evidence": "Both result tables, the machine, and the two commits."
+    },
+    {
+      "id": "manual-scan-smoke",
+      "class": "functional",
+      "scope": "release",
+      "when": {"always": true},
+      "boundary": "A real scan against an authorized target completes and produces the expected event types.",
+      "method": "manual",
+      "procedure": "Run the documented smoke scan against an authorized target.",
+      "evidence": "The command, the event-type counts, and the commit."
+    }
+  ]
+}
