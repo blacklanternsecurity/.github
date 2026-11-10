@@ -15,7 +15,7 @@ Changes here reach every repository on merge.
 |---|---|
 | [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), [SECURITY.md](SECURITY.md), [SUPPORT.md](SUPPORT.md) | Defaults inherited org-wide |
 | [standards/](standards/) | The engineering standard, one concern per file |
-| [templates/](templates/) | `AGENTS.md` and `CLAUDE.md` for other repositories |
+| [templates/](templates/) | `AGENTS.md`, `CLAUDE.md` and the `qa.json` test-artifact matrix for other repositories |
 | [.github/workflows/](.github/workflows/) | Reusable workflows other repositories call |
 | [workflow-templates/](workflow-templates/) | Starter workflows in the Actions picker |
 | [profile/README.md](profile/README.md) | The organization profile page |

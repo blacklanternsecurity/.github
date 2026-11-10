@@ -7,9 +7,16 @@
 
 Closes #
 
-## Validation
+## Test artifacts
 
-<!-- The commands you ran and their real output. Not an assertion that tests pass. -->
+<!-- The proof this change needs, per standards/qa.md and the repository's .github/qa.json.
+     If CI covers it, name the check. If it is a command a reviewer can run, give the command.
+     Only manual results need pasting, here or anywhere else in the pull request.
+     Format is guidance: reviewers note gaps, they do not reject on them. -->
+
+| Artifact | Method | Where |
+|---|---|---|
+|  |  |  |
 
 ```
 ```

@@ -13,6 +13,7 @@ Read the one your task touches, not all of them.
 | [git.md](standards/git.md) | Branching, commit messages, opening or reviewing a pull request |
 | [rfc.md](standards/rfc.md) | A change needs agreement before work starts, or an RFC is ending |
 | [testing.md](standards/testing.md) | Writing or changing tests, or anything that has them |
+| [qa.md](standards/qa.md) | Opening or reviewing a pull request, cutting a release, or adding a `.github/qa.json` |
 | [ci.md](standards/ci.md) | Touching a workflow, an action pin, or a permissions block |
 | [releases.md](standards/releases.md) | Versioning, tagging, or publishing |
 | [repository-setup.md](standards/repository-setup.md) | Creating a repository, or auditing one |

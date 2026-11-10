@@ -52,7 +52,9 @@ Tags and releases: [releases.md](releases.md).
 ## Pull requests
 
 - One concern each. A pull request that fixes a bug and refactors a subsystem gets reviewed twice as slowly and reverted twice as often.
-- The body says what changed, why, and how it was validated. Validation means commands run and their real output, not a claim that tests pass.
+- The body says what changed and why.
+- Validation is the test artifacts [qa.md](qa.md) asks for: a CI check, a command a reviewer can run, or a manual result with its real output. Not a claim that tests pass. It can be anywhere attached to the pull request.
+- The template is guidance. A body that does not follow it gets a note, never a rejection.
 - A change that needs agreement before the work starts is an RFC, not a pull request opened in hope. See [rfc.md](rfc.md).
 
 ## Review

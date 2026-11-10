@@ -10,3 +10,4 @@
 - An intermittent failure is a bug report. Fix the race or fix the test. Never merge a change that makes an existing test flaky.
 - No tests in a repository? Say so. A green check that means nothing is worse than no check.
 - Run the full suite before opening a pull request, not just the file you touched. Commands live in the repository's `AGENTS.md`.
+- Proof outside the suite (an install, a docs build, a benchmark, a security check) is a test artifact. See [qa.md](qa.md).
