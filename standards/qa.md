@@ -53,3 +53,5 @@ The description is one place, never the required place.
 ## Enforcement phase
 
 Trial, from 2026-11-10. A missing artifact is called out by name in the review and recorded, but it does not block a merge. The owner moves this to enforced after reviewing what the trial recorded.
+
+The `release` scope applies only to releases cut under the tag-based process in [releases.md](releases.md). A release already in flight under the earlier process is exempt. bbot 3.1.0 is one.

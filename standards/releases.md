@@ -23,7 +23,7 @@ Commit conventions: [git.md](git.md).
 
 ## Cutting a release
 
-1. Open a pull request setting the version in the manifest. It carries the `release`-scope test artifacts for that commit. See [qa.md](qa.md).
+1. Open a pull request setting the version in the manifest. Under this process, it carries the `release`-scope test artifacts for that commit. See [qa.md](qa.md).
 2. Review and merge it.
 3. Tag that commit on the trunk.
 4. Push the tag.
