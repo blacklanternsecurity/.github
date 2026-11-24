@@ -2,6 +2,8 @@
 
 Commit conventions: [git.md](git.md).
 
+**BBOT family repositories follow the publishing policy** (`.github-config` `docs/policy/publishing.md`), which takes precedence over this file where they differ. There, a reviewed merge into `stable` releases; a lead approves before anything publishes (at the protected `release` environment, or on the `stable` pull request in a private repository); CI publishes with trusted publishing or credentials held only in that environment; and the release App creates the `v*` tag and the GitHub release. Nobody tags by hand. Everything below still applies to those repositories where it doesn't conflict (versions, tag format, artifacts), and in full to every other repository.
+
 ## Versions
 
 - The version lives in `pyproject.toml` or `Cargo.toml`. It changes by a reviewed commit.
