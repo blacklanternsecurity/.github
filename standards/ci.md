@@ -45,7 +45,7 @@ permissions:
 ## Secrets
 
 - Prefer OIDC trusted publishing over long-lived registry tokens. A stored token is valid until somebody rotates it, and every workflow in the repository can read it.
-- Nothing publishes on a branch push. See [releases.md](releases.md).
+- Nothing publishes on a branch push, except where the publishing policy governs (BBOT family: a merge into `stable`, gated as [releases.md](releases.md) describes). See [releases.md](releases.md).
 
 ## Every repository has CI
 

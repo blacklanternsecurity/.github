@@ -56,4 +56,4 @@ The description is one place, never the required place.
 
 Trial, from 2026-11-10. A missing artifact is called out by name in the review and recorded, but it does not block a merge. This holds in a repository with no matrix too. The owner moves this to enforced after reviewing what the trial recorded.
 
-The `release` scope applies only to releases cut under the tag-based process in [releases.md](releases.md). A release already in flight under the earlier process is exempt. bbot 3.1.0 is one.
+The `release` scope applies to releases cut under the tag-based process in [releases.md](releases.md), and to BBOT family releases under the publishing policy, where the `stable` pull request carries the artifacts. A release already in flight under the earlier process is exempt. bbot 3.1.0 is one.
